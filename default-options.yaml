@@ -1,0 +1,6 @@
+repo_url: https://github.com/ubc/flask-sample-app.git
+branch: main
+app_subdir: ""
+start_command: "python3 run.py"
+setup_command: "pip install -r requirements.txt"
+pull_on_start: true
