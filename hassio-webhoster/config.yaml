@@ -1,0 +1,42 @@
+name: Git Repo Webhoster
+version: "0.2.2"
+slug: gitrepo_webhoster
+description: Clone a Git repository and run a user-provided start command.
+url: "https://github.com/rustypig91/hassio-webhoster"
+startup: services
+boot: auto
+panel_icon: mdi:source-repository
+init: false
+map:
+  - type: media
+    read_only: false
+  - type: share
+    read_only: false
+  - type: ssl
+    read_only: true
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+options:
+  repo_url: "https://github.com/ubc/flask-sample-app.git"
+  branch: "main"
+  start_command: "flask run --host=0.0.0.0 --port=5000"
+  setup_command: "pip install -r requirements.txt"
+  github_token: ""
+  poll_interval_seconds: 30
+  environment_variables: []
+schema:
+  repo_url: str
+  branch: str
+  start_command: str
+  setup_command: str
+  github_token: password?
+  poll_interval_seconds: int
+  environment_variables: str
+ports:
+  5000/tcp: 5000
+ports_description:
+  5000/tcp: Web application

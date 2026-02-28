@@ -1,0 +1,5 @@
+{
+    "name": "Home Assistant Add-on: Git Repo Webhoster",
+    "url": "https://github.com/rustypig91/hassio-webhoster",
+    "maintainer": "Christoffer Zakrisson <rustypig91@gmail.com>"
+}
