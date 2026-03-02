@@ -126,7 +126,7 @@ class GitRepoWebhoster:
             return
         print(f"Running setup command: {self.setup_command}...")
         subprocess.run(
-            ["sh", "-lc", self.setup_command],
+            ["bash", "-lc", self.setup_command],
             check=True,
             cwd=self.checkout_dir,
             env=os.environ.copy()
@@ -139,7 +139,7 @@ class GitRepoWebhoster:
 
         print(f"Running start command: {self.start_command}...")
         return subprocess.Popen(
-            ["sh", "-lc", self.start_command],
+            ["bash", "-lc", self.start_command],
             cwd=self.checkout_dir,
             env=os.environ.copy()
         )
