@@ -4,6 +4,12 @@ set -e
 
 . /app/venv/bin/activate
 
+export DATA_DIR=/media/hassio-webhoster
+mkdir -p "$DATA_DIR"
+
+export SHARE_DIR=/share/hassio-webhoster
+mkdir -p "$SHARE_DIR"
+
 exec python3 -u /app/run.py \
     --poll-interval-seconds 30 \
     --repo-url "https://github.com/ubc/flask-sample-app.git" \
