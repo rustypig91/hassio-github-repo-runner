@@ -1,14 +1,30 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-python:3.12-alpine3.21
+ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-ubuntu:24.04
 FROM ${BUILD_FROM}
 
 WORKDIR /app
 
-RUN apk add --no-cache git
+# Install base packages for build development
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        python3.12-dev \
+        python3.12-venv \
+        python-is-python3 \
+        git \
+        curl \
+        ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+
+RUN python3 -m venv venv
 
 COPY requirements.txt requirements.txt
-RUN python3 -m venv venv
-RUN . venv/bin/activate && pip3 install --no-cache-dir -r requirements.txt
-RUN rm -f requirements.txt
+
+RUN source venv/bin/activate &&\
+    pip install --no-cache-dir -r requirements.txt && \
+    python -m ensurepip --upgrade && \
+    python -m pip install --no-cache-dir --upgrade pip && \
+    rm -f requirements.txt
 
 COPY run.py run.py
 COPY run.sh run.sh
