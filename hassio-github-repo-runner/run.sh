@@ -4,10 +4,10 @@ set -e
 
 . /app/venv/bin/activate
 
-export DATA_DIR=/media/hassio-webhoster
+export DATA_DIR=/media/hassio-github-repo-runner
 mkdir -p "$DATA_DIR"
 
-export SHARE_DIR=/share/hassio-webhoster
+export SHARE_DIR=/share/hassio-github-repo-runner
 mkdir -p "$SHARE_DIR"
 
 environment_variables=$(bashio::config 'environment_variables')

@@ -12,8 +12,7 @@ from git import Optional, Repo, InvalidGitRepositoryError
 DATA_DIR = Path(os.getenv("DATA_DIR", "/data"))
 CHECKOUT_DIR = DATA_DIR / "checkout"
 
-os.environ["PATH"] = f"/home/{os.getenv('USER', 'webhoster')}/.local/bin:{os.environ.get('PATH', '')}"
-
+os.environ["PATH"] = f"/home/{os.getenv('USER', 'github-repo-runner')}/.local/bin:{os.environ.get('PATH', '')}"
 
 def _build_authenticated_repo_url(repo_url: str, github_token: Optional[str]) -> str:
     if not github_token:
@@ -28,7 +27,7 @@ def _build_authenticated_repo_url(repo_url: str, github_token: Optional[str]) ->
     return urlunparse(parsed._replace(netloc=netloc))
 
 
-class GitRepoWebhoster:
+class GitRepoRunner:
     def __init__(self, repo_url: str, branch: str, setup_command: str, start_command: str, github_token: Optional[str], poll_interval_seconds: int, checkout_dir: Path):
         self.repo_url = repo_url
         self.branch = branch
@@ -164,7 +163,7 @@ class GitRepoWebhoster:
 
 def parse_args() -> argparse.Namespace:
 
-    parser = argparse.ArgumentParser(description="Git Repo Webhoster")
+    parser = argparse.ArgumentParser(description="GitHub Repo Runner")
     parser.add_argument("--repo-url", type=str,
                         help="Git repository URL", required=True)
     parser.add_argument("--checkout-dir", type=str,
@@ -186,7 +185,7 @@ def main() -> None:
     try:
         args = parse_args()
 
-        webhoster = GitRepoWebhoster(
+        runner = GitRepoRunner(
             repo_url=args.repo_url,
             branch=args.branch,
             setup_command=args.setup_command,
@@ -195,7 +194,7 @@ def main() -> None:
             poll_interval_seconds=args.poll_interval_seconds,
             checkout_dir=Path(args.checkout_dir)
         )
-        webhoster.run()
+        runner.run()
 
     except Exception as error:
         print(f"[ERROR] {error}", file=sys.stderr)

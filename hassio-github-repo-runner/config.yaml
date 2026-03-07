@@ -1,8 +1,8 @@
-name: Git Repo Webhoster
-version: "0.2.7"
-slug: gitrepo_webhoster
+name: Git Repo Runner
+version: "0.2.8"
+slug: github_repo_runner
 description: Clone a Git repository and run a user-provided start command.
-url: "https://github.com/rustypig91/hassio-webhoster"
+url: "https://github.com/rustypig91/hassio-github-repo-runner"
 startup: services
 boot: auto
 panel_icon: mdi:source-repository
@@ -27,7 +27,7 @@ options:
   setup_command: "pip install -r requirements.txt"
   github_token: ""
   poll_interval_seconds: 30
-  environment_variables: []
+  environment_variables: ""
 schema:
   repo_url: str
   branch: str
@@ -36,7 +36,6 @@ schema:
   github_token: password?
   poll_interval_seconds: int
   environment_variables: str
-  environment_variables2: list(str|str|str)
 ports:
   5000/tcp: 5000
 ports_description:

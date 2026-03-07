@@ -1,4 +1,4 @@
-# hassio-webhoster
+# GitHub Repo Runner - Home Assistant Add-on
 
 Home Assistant add-on that clones a Git repository and runs your custom start command.
 
@@ -15,7 +15,7 @@ Home Assistant add-on that clones a Git repository and runs your custom start co
 1. Put this repository somewhere Home Assistant can access.
 2. In Home Assistant, go to **Settings → Add-ons → Add-on Store → ⋮ → Repositories**.
 3. Add the repository URL/path for this repo.
-4. Install **Git Repo Webhoster** and start it.
+4. Install **GitHub Repo Runner** and start it.
 5. Configure the options (repo URL + start command), then start the add-on.
 
 ## Configuration

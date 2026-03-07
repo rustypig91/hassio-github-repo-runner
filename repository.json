@@ -1,5 +1,5 @@
 {
-    "name": "Home Assistant Add-on: Git Repo Webhoster",
-    "url": "https://github.com/rustypig91/hassio-webhoster",
+    "name": "Home Assistant Add-on: GitHub Repo Runner",
+    "url": "https://github.com/rustypig91/hassio-github-repo-runner",
     "maintainer": "Christoffer Zakrisson <rustypig91@gmail.com>"
 }
