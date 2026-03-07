@@ -1,5 +1,5 @@
 name: Git Repo Webhoster
-version: "0.2.5"
+version: "0.2.7"
 slug: gitrepo_webhoster
 description: Clone a Git repository and run a user-provided start command.
 url: "https://github.com/rustypig91/hassio-webhoster"
@@ -36,6 +36,7 @@ schema:
   github_token: password?
   poll_interval_seconds: int
   environment_variables: str
+  environment_variables2: list(str|str|str)
 ports:
   5000/tcp: 5000
 ports_description:
