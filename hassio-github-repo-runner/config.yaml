@@ -1,5 +1,5 @@
 name: Git Repo Runner
-version: "0.2.9"
+version: "0.2.10"
 slug: github_repo_runner
 description: Clone a Git repository and run a user-provided start command.
 url: "https://github.com/rustypig91/hassio-github-repo-runner"
