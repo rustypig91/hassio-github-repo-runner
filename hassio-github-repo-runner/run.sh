@@ -2,6 +2,12 @@
 
 set -e
 
+bashio::log.info "Waiting for network..."
+until ping -c1 -W2 8.8.8.8 &>/dev/null 2>&1; do
+    sleep 2
+done
+bashio::log.info "Network is up."
+
 . /app/venv/bin/activate
 
 export DATA_DIR=/media/hassio-github-repo-runner
